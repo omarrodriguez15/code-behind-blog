@@ -3,18 +3,18 @@
 # Site wide configuration
 ####################################
 #
-title: Leonids
-email:
-description: A simple and awesome blog theme powered by jekyll.
+title: Devlog
+email: devlog@gmail.com 
+description: A simple blog theme powered by jekyll.
 url: # the base hostname & protocol for your site
-keywords: ["blog", "jekyll"]
+keywords: ["omar", "blog", "dotnet", "C#", "powershell", "rodriguez"]
 
 #
 ###################################
 # Jekyll configuration
 ####################################
 #
-timezone:          Europe/Paris
+timezone:          US/Central
 markdown:          kramdown
 highlighter:       rouge
 excerpt_separator: <!--more-->
@@ -33,11 +33,11 @@ kramdown:
 ####################################
 #
 owner:
-  name: Leonids
-  avatar: leonids-logo.png
-  job: "A jekyll theme"
-  bio: "A simple and awesome blog theme powered by jekyll."
-  email:
+  name: Omar Rodriguez
+  avatar: big-coffee.png
+  job: "Software developer"
+  bio: "An attempt to log my development tips, tricks, and hurdles."
+  email: devlog@gmail.com
   disqus-shortname:
   twitter: #username
   facebook: #username

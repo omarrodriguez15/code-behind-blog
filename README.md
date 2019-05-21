@@ -1,3 +1,7 @@
+# Update 05/20/2019
+Quickstart command `bundle exec jekyll server`
+
+
 # Update 07/09/2018
 
 I'm planning to refactor Leonids theme!!!
