@@ -1,6 +1,8 @@
 # Update 05/20/2019
 Quickstart command `bundle exec jekyll server`
 
+Generate site for production command `bundle exec jekyll build`
+
 
 # Update 07/09/2018
 
