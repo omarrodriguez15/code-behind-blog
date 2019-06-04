@@ -6,7 +6,7 @@
 title: Devlog
 email: devlog@gmail.com 
 description: A simple blog theme powered by jekyll.
-url: # the base hostname & protocol for your site
+url: https://www.therealomar.com
 keywords: ["omar", "blog", "dotnet", "C#", "powershell", "rodriguez"]
 
 #
@@ -39,19 +39,19 @@ owner:
   bio: "An attempt to log my development tips, tricks, and hurdles."
   email: devlog@gmail.com
   disqus-shortname:
-  twitter: #username
+  twitter: "@devlog17"
   facebook: #username
   google:
     plus: #username
-    analytics:
+    analytics: UA-54684800-1
     verify:
     ad-client:
     ad-slot:
   bing-verify:
-  github: #username
+  github: omarrodriguez15
   gitlab: #username
-  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: #username
+  stackoverflow: 4172545/omar-rodriguez
+  linkedin: omar-rodriguez-0299b190
   skype: #username
   xing: #username
   instagram: #username
