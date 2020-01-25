@@ -5,13 +5,15 @@ date:   2020-01-24 12:15:00
 categories: [post-4, reading]
 tags: []
 comments: false
+image:
+  feature: 2019-books.png
+  credit: Omar Rodriguez
 ---
- 
-One of my 2019 resolutions was to read at least one book per month. Now I can proudly say I read 22 books from start to finish in 2019. Before this I think I was reading maybe 1-3 books a year.
+One of my 2019 resolutions was to read at least one book per month. Now I can proudly say I read 22 books from start to finish in 2019. Before this I think I was reading maybe 1-3 books a year. (I'll admit this post is a bit of a pat on the back for myself :)) 
  
 <!--more-->
  
-<A href="#Conclusion">Skip to the conclusion section below if you want.</A>
+<A href="#conclusion">Skip to the conclusion section below if you want.</A>
  
 # Why read more?
 I've always loved going to bookstores to flip through coffee table books, browse through fiction book covers, then taking home some "bargain buys" I just had to have. The problem always was I lacked motivation and lost interest in the books after the first day or two of reading.
@@ -45,9 +47,10 @@ After seeing the list and picture of books I read this past year I feel so accom
  
 
 # Some related resources
-* Really eye opening info, even if it isn't 100% accurate I'm sure it is close, about how many books the average person reads:
-https://www.quora.com/How-many-books-does-the-average-American-read-per-year#
-* I really like the insightful idea he presents at timestamp 1:20-3:10. The video at hole is good too. :
-https://youtu.be/AYOZpDg6Oj0
-* Realy fun and motivational 30ish minute movie about books, bookstores, and reading. : 
-https://youtu.be/lIW5jBrrsS0
+* [Quora -  how many books does the average American read per year](https://www.quora.com/How-many-books-does-the-average-American-read-per-year#)
+   * Really eye opening info, even if it isn't 100% accurate I'm sure it is close, about how many books the average person reads.
+* [I Read 100 Books in 100 Weeks](https://youtu.be/AYOZpDg6Oj0)
+   * I really like the insightful idea he presents at timestamp 1:20-3:10. The video at hole is good too.
+* [BOOKSTORES: How to Read More Books in the Golden Age of Content](https://youtu.be/lIW5jBrrsS0)
+   * Realy fun and motivational 30ish minute movie about books, bookstores, and reading.
+
