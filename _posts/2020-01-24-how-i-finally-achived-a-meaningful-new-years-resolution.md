@@ -13,7 +13,8 @@ One of my 2019 resolutions was to read at least one book per month. Now I can pr
  
 <!--more-->
  
-<A href="#conclusion">Skip to the conclusion section below if you want.</A>
+Skip to the  <A href="#conclusion">conclusion here.</A>  
+See the full list of books I read <A href="#books">here.</A>
  
 # Why read more?
 I've always loved going to bookstores to flip through coffee table books, browse through fiction book covers, then taking home some "bargain buys" I just had to have. The problem always was I lacked motivation and lost interest in the books after the first day or two of reading.
@@ -54,3 +55,26 @@ After seeing the list and picture of books I read this past year I feel so accom
 * [BOOKSTORES: How to Read More Books in the Golden Age of Content](https://youtu.be/lIW5jBrrsS0)
    * Realy fun and motivational 30ish minute movie about books, bookstores, and reading.
 
+
+## Books ##  
+* [The restaurant at the end of the universe](https://lmgtfy.com/?q=The+restaurant+at+the+end+of+the+universe)  
+* [Life the universe and everything](https://lmgtfy.com/?q=Life+the+universe+and+everything)  
+* [So long and thanks for all the fish](https://lmgtfy.com/?q=So+long+and+thanks+for+all+the+fish)  
+* [Mostly harmless](https://lmgtfy.com/?q=Mostly+harmless)  
+* [The 7 habits of highly effective people](https://lmgtfy.com/?q=The+7+habits+of+highly+effective+people)  
+* [The New Father: A Dad's Guide to the First Year](https://lmgtfy.com/?q=The+New+Father%3A+A+Dad%27s+Guide+to+the+First+Year)  
+* [This book loves you](https://lmgtfy.com/?q=This+book+loves+you)  
+* [The definitive book of body language](https://lmgtfy.com/?q=The+definitive+book+of+body+language)  
+* [Structure and interpretation of computer programs](https://lmgtfy.com/?q=Structure+and+interpretation+of+computer+programs)  
+* [Metamorphosis](https://lmgtfy.com/?q=Metamorphosis)  
+* [A humans guide to machine intelligence](https://lmgtfy.com/?q=A+humans+guide+to+machine+intelligence)  
+* [In the beginning was the command line](https://lmgtfy.com/?q=In+the+beginning+was+the+command+line)  
+* [The time machine](https://lmgtfy.com/?q=The+time+machine)  
+* [Hyperbole and a half](https://lmgtfy.com/?q=Hyperbole+and+a+half)  
+* [Harry Potter and the sourcer stone](https://lmgtfy.com/?q=Harry+Potter+and+the+sourcer+stone)  
+* [Clean agile](https://lmgtfy.com/?q=Clean+agile)  
+* [Harry Potter and the champer and secret](https://lmgtfy.com/?q=Harry+Potter+and+the+champer+and+secret)  
+* [The incredible hulk: stalker from the stars](https://lmgtfy.com/?q=The+incredible+hulk%3A+stalker+from+the+stars)  
+* [Head in the cloud](https://lmgtfy.com/?q=Head+in+the+cloud)  
+* [Quiditch through the ages](https://lmgtfy.com/?q=Quiditch+through+the+ages)  
+* [The art of war](https://lmgtfy.com/?q=The+art+of+war)  
