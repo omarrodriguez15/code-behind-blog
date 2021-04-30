@@ -1,0 +1,46 @@
+name: PublishPost
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6 # Not needed with a .ruby-version file
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: "Build site"
+      run: |
+        gem install jekyll
+        bundle exec jekyll build
+    - name: "Push build changes"
+      run: |
+        echo "Target branch: $TARGET_BRANCH"
+        git clone --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/${DST_REPO}.git ${DST_REPO_DIR}
+        cd ${DST_REPO_DIR}
+        git checkout -B ${TARGET_BRANCH}
+
+        cp -rf ../_site/* .
+        git checkout -- README.md
+
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+        if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes detected "
+        else
+            git add -A
+            git commit --message "latest generated changes for site (RUN ID $GITHUB_RUN_NUMBER)"
+            git push origin $TARGET_BRANCH
+        fi
+        echo "Copying complete 👌"
+      env:
+          TARGET_BRANCH: generated-site-changes-${{ github.run_number }}
+          DST_REPO_DIR: temprepo
+          DST_REPO: omarrodriguez15/omarrodriguez15.github.io
+
+        
