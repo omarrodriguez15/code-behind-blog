@@ -15,7 +15,7 @@ jobs:
     - uses: andstor/copycat-action@v3
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: _site
+        src_path: /_site
         src_branch: omarrodriguez15-workflow
         dst_branch: test-post-publish
         dst_path: /.
