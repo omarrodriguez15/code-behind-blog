@@ -11,3 +11,11 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - run: gem install jekyll
     - run: bundle exec jekyll build
+    
+    - uses: andstor/copycat-action@v3
+      with:
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        src_path: _site
+        dst_path: /.
+        dst_owner: omarrodriguez15
+        dst_repo_name: omarrodriguez15.github.io
