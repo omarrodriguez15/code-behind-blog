@@ -1,5 +1,5 @@
 name: PublishPost
-on: [push, pull_request]
+on: [pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -16,6 +16,8 @@ jobs:
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
         src_path: _site
+        src_branch: omarrodriguez15-workflow
+        dst_branch: test-post-publish
         dst_path: /.
         dst_owner: omarrodriguez15
         dst_repo_name: omarrodriguez15.github.io
