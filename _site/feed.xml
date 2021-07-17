@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devlog</title>
+    <description>A simple blog theme powered by jekyll.</description>
+    <link>https://www.therealomar.com/</link>
+    <atom:link href="https://www.therealomar.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>2021-04-30</pubDate>
+    <lastBuildDate>Fri, 30 Apr 2021 15:46:35 -0500</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Increasing my command line efficiency</title>
+        <description>&lt;p&gt;My command line environment is where I spend a big chunk of my time as a developer. I have noticed a big boost in efficiency by taking some time to customize my command line environment and powershell profile.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;a href=&quot;#my-powershell-profile&quot;&gt;Skip to the meat and potatoes of this post, the My powershell profile section, here.&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;#setup&quot;&gt;Skip to the setup section here.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;tools-used&quot;&gt;Tools used&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://conemu.github.io/&quot;&gt;ConEmu&lt;/a&gt;&lt;/strong&gt; &lt;br /&gt;
+ConEmu is the terminal I use. I would prefer to use Windows Terminal but my work computer is not on a new enough build of Windows 10 to use it :(. Main reason I picked ConEmu is because it seemed to be the base that a lot of popular terminals are built on top of and it allows tabbing of shells. ConEmu is highly customizable and tons of features but I don’t take advantage of much of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-5.1&quot;&gt;Powershell&lt;/a&gt;&lt;/strong&gt; &lt;br /&gt;
+For my shell I use Powershell 5.1, the default version on Windows 10. I have become very comftorable with powershell and find automating things a breeze and fun with powershell.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/dahlbyk/posh-git&quot;&gt;Posh-git&lt;/a&gt;&lt;/strong&gt; &lt;br /&gt;
+Posh-git is a must have powershell module for git. It provides a bunch of really important info at a glance in the command line when in a git repo.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Side note related to must have git add-ons is the one and only git GUI I like. It is a nice lightweight &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph&quot;&gt;VsCode extension called GitGraph&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+&lt;h3 id=&quot;conemu&quot;&gt;ConEmu&lt;/h3&gt;
+&lt;p&gt;Download and install ConEmu &lt;a href=&quot;https://conemu.github.io/&quot;&gt;here.&lt;/a&gt; First thing I did was to modify one of the Predefined tasks. Speifically the &lt;code class=&quot;highlighter-rouge&quot;&gt;{Shells::Powershell (Admin)}&lt;/code&gt; task and set it as the startup task. The modification and setting of startup task is all done in the settings. This is what my startup task looks like.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;powershell.exe -new_console:a
+powershell.exe -new_console:s50V
+powershell.exe -new_console:as50H&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;What I have here is a base command &lt;code class=&quot;highlighter-rouge&quot;&gt;powershell.exe -new_console:*&lt;/code&gt; which creates a new powershell shell with some addtional arguments. The first line uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; argument to create the shell as admin. The second line uses &lt;code class=&quot;highlighter-rouge&quot;&gt;s50V&lt;/code&gt; which translates to split the current panel (&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;) by 50% (&lt;code class=&quot;highlighter-rouge&quot;&gt;50&lt;/code&gt;) vertically (&lt;code class=&quot;highlighter-rouge&quot;&gt;V&lt;/code&gt;). The third line uses &lt;code class=&quot;highlighter-rouge&quot;&gt;as50H&lt;/code&gt; which translates to run as admin (&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;) split the current panel (&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;) by 50% (&lt;code class=&quot;highlighter-rouge&quot;&gt;50&lt;/code&gt;) horizontally (&lt;code class=&quot;highlighter-rouge&quot;&gt;H&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;The end result can be seen in the main image above.&lt;/p&gt;
+
+&lt;h3 id=&quot;posh-git&quot;&gt;Posh-git&lt;/h3&gt;
+&lt;p&gt;The github readme has really good &lt;a href=&quot;https://github.com/dahlbyk/posh-git&quot;&gt;installation instruction&lt;/a&gt; as well as alternatives installation/setup options to what I will provide below.&lt;/p&gt;
+
+&lt;p&gt;Run the following 3 commands. The following installs via powershell gallery, imports the module, and then adds the module to your powershell profile.
+Install it via powershell gallery.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
+Import-Module posh-git
+Add-PoshGitToProfile -AllHosts&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE: If you’re asked to trust packages from the PowerShell Gallery, answer yes to continue installation of posh-git&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;my-powershell-profile&quot;&gt;My powershell profile&lt;/h3&gt;
+&lt;p&gt;Customizing my powershell profile is really where I have increased my dev workflow efficiency. The powershell profile is essentially just a powershell script that runs when you open a new powershell shell. What I have done is created a bunch of little cmdlets, basically global functions, I can run at anytime in any powershell shell.&lt;/p&gt;
+
+&lt;p&gt;To get started what I do is run &lt;code class=&quot;highlighter-rouge&quot;&gt;$PROFILE.CurrentUserAllHosts&lt;/code&gt; this will tell you the file path for your profile. Go ahead and open it in your favorite text editor and if it doesn’t exists create it.&lt;/p&gt;
+
+&lt;h4 id=&quot;switching-directories-like-a-ninja&quot;&gt;Switching directories like a ninja&lt;/h4&gt;
+&lt;p&gt;Something I do a lot is switch between code repositories. A lot of the code repos I work with have long names which means a lot more keystores than I would like just to switch between repo directories. So I created some aliases. Here is an example of what I put in my &lt;code class=&quot;highlighter-rouge&quot;&gt;profile.ps1&lt;/code&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Set&lt;/span&gt;-ShuttleCodeLocation &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;Set-Location &lt;/span&gt;D:\code\space-shuttle-controller
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Use New-Alias over Set-Alias https://stackoverflow.com/a/48093733&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;New-Alias&lt;/span&gt; -Name ShuttleCode -Value &lt;span class=&quot;nb&quot;&gt;Set&lt;/span&gt;-ShuttleCodeLocation&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now any powershell session I start I can just type &lt;code class=&quot;highlighter-rouge&quot;&gt;ShuttleCode&lt;/code&gt; and it will change my directory to my shuttle code repo’s directory. To save even more keystrokes you can take advantage of powershell auto complete and just type &lt;code class=&quot;highlighter-rouge&quot;&gt;shu&lt;/code&gt; followed by &lt;code class=&quot;highlighter-rouge&quot;&gt;TAB&lt;/code&gt; and powershell should auto complete to &lt;code class=&quot;highlighter-rouge&quot;&gt;ShuttleCode&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;clean-a-project-folder&quot;&gt;Clean a project folder&lt;/h4&gt;
+&lt;p&gt;Every now and then we want to clean up all bin and obj folders because something isn’t working correctly.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cm&quot;&gt;&amp;lt;#
+   This will recursively remove all bin and obj folders in the current directory.
+#&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;rmBinAndObjs &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Commented out is the shorthand version&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# ls -include bin,obj -r | %{rm -r -Force }&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;Get-ChildItem&lt;/span&gt; -Include bin,obj -Recurse | &lt;span class=&quot;k&quot;&gt;ForEach&lt;/span&gt;-Object &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Remove-Item&lt;/span&gt; -Recurse -Force &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;.FullName &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;some-git-cmdlets&quot;&gt;Some git cmdlets&lt;/h4&gt;
+&lt;p&gt;Yes, I know I could probably do this with git aliases but for non trivial git commands I feel less constrained with powershell.&lt;/p&gt;
+
+&lt;p&gt;This first set of cmdlets is useful for working with those files that are checked into git, and get modified locally but we don’t want them showing up in our local set of modified files in git. Usually this is useful with config files.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;Hide-FileFromGit &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CmdletBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FileName&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Don't show file in changes&lt;/span&gt;
+    git update-index --skip-worktree &lt;span class=&quot;nv&quot;&gt;$FileName&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;Show-FilesHiddenFromGit &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CmdletBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FileName&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# List files you are skipping&lt;/span&gt;
+    git &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;-files -v &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sls&lt;/span&gt; ^S
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;Undo-HideFileFromGit &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CmdletBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FileName&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Undo skip file&lt;/span&gt;
+    git update-index --no-skip-worktree &lt;span class=&quot;nv&quot;&gt;$FileName&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This cmdlet is a convenient way to create a new branch from latest version of master and publish it to the remote repo. You may notice the &lt;code class=&quot;highlighter-rouge&quot;&gt;[Parameter(Mandatory)]&lt;/code&gt; attribute on the &lt;code class=&quot;highlighter-rouge&quot;&gt;$NewBranchName&lt;/code&gt; parameter. This is a really cool feature that makes it so that if you run this cmdlet without providing that parameter powershell will auto prompt you for the paramter value before proceeding.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;Publish-GitBranch &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CmdletBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()]&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Parameter&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Mandatory&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$NewBranchName&lt;/span&gt;,
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BaseBranch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'master'&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+   &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$currentBranch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; git rev-parse --abbrev-ref HEAD
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LASTEXITCODE&lt;/span&gt; -ne 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;You must be in a Git repository&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+      &lt;span class=&quot;nb&quot;&gt;Write-Output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git checkout &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BaseBranch&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+      git checkout &lt;span class=&quot;nv&quot;&gt;$BaseBranch&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;Write-Output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git pull&quot;&lt;/span&gt;
+      git pull
+      &lt;span class=&quot;nb&quot;&gt;Write-Output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git checkout -b &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$NewBranchName&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+      git checkout -b &lt;span class=&quot;nv&quot;&gt;$NewBranchName&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;Write-Output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git push --set-upstream origin &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$NewBranchName&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+      git push --set-upstream origin &lt;span class=&quot;nv&quot;&gt;$NewBranchName&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I have a lot more stuff in my powershell profile but is essentially just variations on what I’ve already shown above but more tailored to my specific work environment.&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;I found the majority of my increase in efficency came in customizing my powershell profile to automate a bunch of repititve tasks that saved me keystrokes and little google searches for commands throughout the day. Using something like conemu over powershell I think makes the screen more pleasing to look at, also the multiple shells at a glance using split panels is very useful in many scenarios. Using posh-git is just a must have for anyone using git on windows I would take that and powershell any day over the windows git bash terminal.&lt;/p&gt;
+
+&lt;p&gt;If you have any comments or questions reach out on Twitter &lt;a href=&quot;https://twitter.com/omarr2d2&quot;&gt;@Omarr2d2&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>2021-04-30</pubDate>
+        <link>https://www.therealomar.com/articles/2021-04/Increasing-my-command-line-efficiency</link>
+        <guid isPermaLink="true">https://www.therealomar.com/articles/2021-04/Increasing-my-command-line-efficiency</guid>
+        
+        
+        <category>post-5</category>
+        
+        <category>development</category>
+        
+        <category>dev</category>
+        
+      </item>
+    
+      <item>
+        <title>How I finally achieved a meaningful new years resolution</title>
+        <description>&lt;p&gt;One of my 2019 resolutions was to read at least one book per month. Now I can proudly say I read 22 books from start to finish in 2019. Before this I think I was reading maybe 1-3 books a year. (I’ll admit this post is a bit of a pat on the back for myself :))&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Skip to the  &lt;a href=&quot;#conclusion&quot;&gt;conclusion here.&lt;/a&gt;&lt;br /&gt;
+See the full list of books I read &lt;a href=&quot;#books&quot;&gt;here.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;why-read-more&quot;&gt;Why read more?&lt;/h1&gt;
+&lt;p&gt;I’ve always loved going to bookstores to flip through coffee table books, browse through fiction book covers, then taking home some “bargain buys” I just had to have. The problem always was I lacked motivation and lost interest in the books after the first day or two of reading.&lt;/p&gt;
+
+&lt;p&gt;Probably like most of you, I was always told, from multiple sources, how good reading was. I was told that smart and successful people tend to read a lot. However even if I was eventually able to conjure the motivation to start and finish a book, it would normally drain me of my will to pick up another book once I finished. So after begrudgingly finishing one book I would take multiple months to refill my will power reservoir to pick up another book.&lt;/p&gt;
+
+&lt;h1 id=&quot;how-i-managed-to-read-more&quot;&gt;How I managed to read more&lt;/h1&gt;
+&lt;h2 id=&quot;setting-a-specific-goal&quot;&gt;Setting a specific goal&lt;/h2&gt;
+&lt;p&gt;In the past I tried challenging myself to read more but always seemed to fail. I think one of the reasons was not being specific or reasonable enough in setting my goal. So setting a goal to just one book a month was perfect for me. It was specific enough that at towards the end of a month I could easily say “I am meeting my goal” or “I am failing”. This gave me the extra little motivation to, if I hadn’t made progress on a book, make it a priority and sit down to read a book instead of doing other time wasting activities.&lt;/p&gt;
+
+&lt;h2 id=&quot;tracking-my-progress&quot;&gt;Tracking my progress&lt;/h2&gt;
+&lt;p&gt;In 2019 I also started keeping a bullet journal (&lt;a href=&quot;https://youtu.be/fm15cmYU0IM&quot;&gt;this is the video that got me started&lt;/a&gt;). In this journal I wrote a special note on the day I finished a book. Doing this seemingly small act gave me a nice little dopamine hit. As the number of books I read started to accumulate the easier it became to pick up the next book.&lt;/p&gt;
+
+&lt;h2 id=&quot;exploring-new-genres&quot;&gt;Exploring new genres&lt;/h2&gt;
+&lt;p&gt;Normally I only read biographies and tech books (coding principles and books about tech companies). But during this challenge I didn’t really stick to any specific genre I just found any book that looked good or people were recommending and started essentially building a mini library at home. Then I could easily just pick one up and start reading. I purposefully didn’t keep an ordered backlog of books because I didn’t want reading to feel like a chore or TODO list I wanted mystery and excitement in the next book I picked to read.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-i-used-to-read&quot;&gt;What I used to read&lt;/h2&gt;
+&lt;p&gt;I used everything. When in a car or mowing the lawn, I used an audio book. When in bed after the wife and kid were asleep I used my Kindle Paperwhite. On a Saturday or Sunday morning with a cup of coffee holding a physical book was best. While killing time instead of scrolling through social media feeds the eBook on my phone wasn’t too bad, but definitely my least favorite.&lt;/p&gt;
+
+&lt;p&gt;Obviously it’s not very economical to buy every form of a book. So usually I would just buy the physical book, my favorite medium. Every now and then I would splurge and also get the eBook or audio book of a physical copy I already owned. Pro Tip: For most classic books, i.e. old books, you can actually get a legal free version of the eBook and audiobook on sites like &lt;a href=&quot;https://librivox.org/&quot;&gt;librivox&lt;/a&gt;. They even have a mobile apps for ease of use.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;If you too want to read more or have set a new years resolution to read more here is what I found really helped me:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Set a very specific and reasonable goal.&lt;/li&gt;
+  &lt;li&gt;Track your progress.&lt;/li&gt;
+  &lt;li&gt;Mix up the type and genre of books you read.&lt;/li&gt;
+  &lt;li&gt;Don’t limit yourself to one medium. i.e. use eBooks, physical books, and/or audio books. They all have their time and place.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;whats-next&quot;&gt;What’s next&lt;/h3&gt;
+&lt;p&gt;After seeing the list and picture of books I read this past year I feel so accomplished and motivated to read even more this new year. Almost at the end of January but I’ll be making a new post here shortly of my new year resolutions for 2020.&lt;/p&gt;
+
+&lt;h1 id=&quot;some-related-resources&quot;&gt;Some related resources&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.quora.com/How-many-books-does-the-average-American-read-per-year#&quot;&gt;Quora -  how many books does the average American read per year&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Really eye opening info, even if it isn’t 100% accurate I’m sure it is close, about how many books the average person reads.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/AYOZpDg6Oj0&quot;&gt;I Read 100 Books in 100 Weeks&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;I really like the insightful idea he presents at timestamp 1:20-3:10. The video at hole is good too.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/lIW5jBrrsS0&quot;&gt;BOOKSTORES: How to Read More Books in the Golden Age of Content&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Realy fun and motivational 30ish minute movie about books, bookstores, and reading.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;books&quot;&gt;Books&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=The+restaurant+at+the+end+of+the+universe&quot;&gt;The restaurant at the end of the universe&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Life+the+universe+and+everything&quot;&gt;Life the universe and everything&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=So+long+and+thanks+for+all+the+fish&quot;&gt;So long and thanks for all the fish&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Mostly+harmless&quot;&gt;Mostly harmless&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=The+7+habits+of+highly+effective+people&quot;&gt;The 7 habits of highly effective people&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=The+New+Father%3A+A+Dad%27s+Guide+to+the+First+Year&quot;&gt;The New Father: A Dad’s Guide to the First Year&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=This+book+loves+you&quot;&gt;This book loves you&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=The+definitive+book+of+body+language&quot;&gt;The definitive book of body language&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Structure+and+interpretation+of+computer+programs&quot;&gt;Structure and interpretation of computer programs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Metamorphosis&quot;&gt;Metamorphosis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=A+humans+guide+to+machine+intelligence&quot;&gt;A humans guide to machine intelligence&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=In+the+beginning+was+the+command+line&quot;&gt;In the beginning was the command line&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=The+time+machine&quot;&gt;The time machine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Hyperbole+and+a+half&quot;&gt;Hyperbole and a half&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Harry+Potter+and+the+sourcer+stone&quot;&gt;Harry Potter and the sourcer stone&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Clean+agile&quot;&gt;Clean agile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Harry+Potter+and+the+champer+and+secret&quot;&gt;Harry Potter and the champer and secret&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=The+incredible+hulk%3A+stalker+from+the+stars&quot;&gt;The incredible hulk: stalker from the stars&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Head+in+the+cloud&quot;&gt;Head in the cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=Quiditch+through+the+ages&quot;&gt;Quiditch through the ages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lmgtfy.com/?q=The+art+of+war&quot;&gt;The art of war&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>2021-04-30</pubDate>
+        <link>https://www.therealomar.com/articles/2020-01/how-i-finally-achived-a-meaningful-new-years-resolution</link>
+        <guid isPermaLink="true">https://www.therealomar.com/articles/2020-01/how-i-finally-achived-a-meaningful-new-years-resolution</guid>
+        
+        
+        <category>post-4</category>
+        
+        <category>reading</category>
+        
+      </item>
+    
+      <item>
+        <title>Git the most edited files in a project</title>
+        <description>&lt;p&gt;This post was inspired from seeing multiple bugs coming from the same file in a project in a short period of time. I could easily see all types of code smells in this particular file. So I had a hypothesis, if I could find the most edited files in the repo I would likely find the files with the most technical debt i.e. most code smells. So I created a very simple powershell script to test my hypothesis.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;a href=&quot;#solution&quot;&gt;Skip to the solution section below if you just want to see code.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;why-do-the-most-edited-files-matter-&quot;&gt;Why do the most edited files matter ?&lt;/h2&gt;
+&lt;p&gt;Why do files change? In most cases files change for two reasons, there is a bug or there are changes that are needed to support a new feature. Lots of changes in a file due to bugs is obviously a good reason to take a closer look at a file.&lt;/p&gt;
+
+&lt;p&gt;Lots of changes to a file in order to support new features is also a good reason to take a closer look at a file since it could mean that the rest of your project may be too tightly coupled to things in this file or maybe the file has too many responsibilities.&lt;/p&gt;
+
+&lt;h2 id=&quot;different-approaches-to-the-problem&quot;&gt;Different approaches to the problem&lt;/h2&gt;
+&lt;p&gt;The solution below can easily be converted into some other scripting language if needed but since powershell is cross-platform you should be able to run this on any some what modern computer. Tested both on windows and OSX&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;This is the pretty script version you can just copy paste this into a &lt;code class=&quot;highlighter-rouge&quot;&gt;.ps1&lt;/code&gt; file and  run it.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Notice that the last command argument &lt;code class=&quot;highlighter-rouge&quot;&gt;-First 10&lt;/code&gt; can be changed to control the top results you want displayed.&lt;/li&gt;
+  &lt;li&gt;Add a &lt;code class=&quot;highlighter-rouge&quot;&gt;-#&lt;/code&gt; to the git command to control how many commits you want to run the script on. For example &lt;code class=&quot;highlighter-rouge&quot;&gt;git log --pretty=format: --name-only -50&lt;/code&gt; will only run the analysis on the last 50 commits.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;git log --pretty&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;format: --name-only | 
+&lt;span class=&quot;nb&quot;&gt;Where&lt;/span&gt;-Object &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;::IsNullOrEmpty&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;  | 
+&lt;span class=&quot;nb&quot;&gt;Group-Object&lt;/span&gt;  | 
+&lt;span class=&quot;nb&quot;&gt;Sort-Object&lt;/span&gt; -Property Count -Descending | 
+&lt;span class=&quot;nb&quot;&gt;Select-Object&lt;/span&gt; -Property Count, Name -First 10&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Here is a shortened dirty one-liner version&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;git log --pretty&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;format: --name-only | ? &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;::IsNullOrEmpty&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;group&lt;/span&gt;  | &lt;span class=&quot;nb&quot;&gt;Sort-Object&lt;/span&gt; -Property Count -Descending | &lt;span class=&quot;nb&quot;&gt;select&lt;/span&gt; -Property Count, Name -First 10 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;code-breakdown&quot;&gt;Code breakdown&lt;/h2&gt;
+&lt;p&gt;Using some built-in powershell cmdlets and pipelining we transform some git text output into some useful statistics about a repository.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log --pretty=format: --name-only&lt;/code&gt; gives you the list of files changed per commit.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Where-Object { ![string]::IsNullOrEmpty($_) }&lt;/code&gt; filters out all empty lines that are used by the git output from the first command to separate commits.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Group-Object&lt;/code&gt; groups all the lines that are the same together and gives you the number of objects in each group.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Sort-Object -Property Count -Descending&lt;/code&gt; sorts the groups by the &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt; which is number of same files from highest to lowest.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Select-Object -Property Count, Name -First 10&lt;/code&gt; selects the first 10 objects and displays the &lt;code class=&quot;highlighter-rouge&quot;&gt;Count&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Name&lt;/code&gt; properties. (The properties are from the objects that &lt;code class=&quot;highlighter-rouge&quot;&gt;Group-Object&lt;/code&gt; has passed down the pipeline)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;some-notes-on-the-dirty-one-liner&quot;&gt;Some notes on the “Dirty one-liner”&lt;/h3&gt;
+&lt;p&gt;This one-liner is essentially the same thing as the pretty version except that it is all on one-line and uses the aliases for &lt;code class=&quot;highlighter-rouge&quot;&gt;Where-Object&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Group-Object&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;Select-Object&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;example-output&quot;&gt;Example output&lt;/h2&gt;
+&lt;p&gt;Output after running the code should be something like this :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Count Name                            
+----- ----                            
+   33 _config.yml                     
+   16 _layouts/post.html              
+   15 README.md                       
+   13 _includes/sidebar.html   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;room-for-improvement&quot;&gt;Room for improvement&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Instead of just sorting by the number of times a file has changed sort by the number of lines in aggregate that has changed in a file.&lt;/li&gt;
+  &lt;li&gt;Maybe as a part 2 complementary type script, have a way to determine the most changed section of code maybe even narrow it down to functions or class names.&lt;/li&gt;
+  &lt;li&gt;Filter out certain projects in a repository to target analysis to a specific project.&lt;/li&gt;
+  &lt;li&gt;Filter out non bug-fix changes.&lt;/li&gt;
+  &lt;li&gt;Filter out bug-fix changes.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>2021-04-30</pubDate>
+        <link>https://www.therealomar.com/articles/2019-06/Git-the-most-edited-files-in-a-project</link>
+        <guid isPermaLink="true">https://www.therealomar.com/articles/2019-06/Git-the-most-edited-files-in-a-project</guid>
+        
+        <category>software</category>
+        
+        <category>programming</category>
+        
+        <category>git</category>
+        
+        <category>clean code</category>
+        
+        
+        <category>post-3</category>
+        
+        <category>software</category>
+        
+        <category>programming</category>
+        
+        <category>git</category>
+        
+        <category>clean code</category>
+        
+      </item>
+    
+      <item>
+        <title>How to create a zip in Xamarin Android</title>
+        <description>&lt;p&gt;This solution is specifically for Android using Xamarin because I am using the &lt;code class=&quot;highlighter-rouge&quot;&gt;Java.Util.Zip&lt;/code&gt; Class. This solution can just as easily be ported to Java.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;a href=&quot;#solution&quot;&gt;Skip to the solution section below if you just want to see code.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;why-i-needed-this-functionality&quot;&gt;Why I needed this functionality?&lt;/h1&gt;
+&lt;p&gt;I am working on building an Android tool to help troubleshoot problems on a device that isn’t easily accessible. I was implementing a feature to gather important local files and folders then package them up and email them to interested parties. The compressing of the files is important since many of the devices where the app will be used will likely have poor internet connection.&lt;/p&gt;
+
+&lt;h1 id=&quot;different-approaches-to-the-problem&quot;&gt;Different approaches to the problem&lt;/h1&gt;
+&lt;h3 id=&quot;the-pure-c-approach&quot;&gt;The pure C# approach&lt;/h3&gt;
+&lt;p&gt;Originally I tried looking for a generic C# solution that I could potentially make cross platform. However the &lt;code class=&quot;highlighter-rouge&quot;&gt;System.IO.Compression&lt;/code&gt; API was a bit limited. For example I can easily compresses a directory but I have no control over what gets compressed in the folder i.e. if I want to skip over specific folders the api does not allow this.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-nuget-package-approach&quot;&gt;The NuGet package approach&lt;/h3&gt;
+&lt;p&gt;I attempted to look for a NuGet package that would simply zip a folder for me. That lead me to the possibility of using the 7z nuget but decided to hold off on going down that path because of lack of easy to find/read documentation.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-android-specific-approach&quot;&gt;The Android specific approach&lt;/h3&gt;
+&lt;p&gt;Then I attempted to find an Android specific solution, in Java, which lead me to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Java.Util.Zip&lt;/code&gt; class. I found a nice example of it’s usage to compress and decompress zips. The port to C# was pretty straight forward.&lt;/p&gt;
+
+&lt;p&gt;I made some modifications like being able to skip folders as well as some refactoring for readability. Fixed some file contingency issues since I am not guaranteed that the files I am compressing will not be written to as I am reading them to compress them.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-usage-of-solution&quot;&gt;Example usage of solution&lt;/h3&gt;
+&lt;p&gt;Here is an example of a simple usage of the solution. Notice the destination of the zip can be anywhere. The last parameter can be an empty set if you don’t want to exclude any folders.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;ZippingAround&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Compress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/sdcard/foo/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/sdcard/destination/foo.zip&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HashSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;large-files-folder&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.IO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Linq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Java.Util.Zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;foo&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ZippingAround&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Compress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HashSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;excludeFolders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filestream&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FileStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FileMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OpenOrCreate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FileAccess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ZipOutputStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filestream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+               &lt;span class=&quot;nf&quot;&gt;CompressDirectory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;excludeFolders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+               &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Finish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+      &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CompressDirectory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir2zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZipOutputStream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HashSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foldersToExclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir2zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ArgumentException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;Directory given does not exists. [&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir2zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+         &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipDir&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DirectoryInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir2zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetFiles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;relativePath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsNullOrEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;AddFileToArchive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;relativePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+         &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;directories&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;directory&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetDirectories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                           &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foldersToExclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                           &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;directory&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;relativeParentPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsNullOrEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;CompressDirectory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foldersToExclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;relativeParentPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+      &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;AddFileToArchive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ZipOutputStream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;relativePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fullPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tempFileName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UtcNow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Ticks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.temp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tempFileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;PutNextEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ZipEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;relativePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ReadAllBytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tempFileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;zipStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CloseEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;Problem compressing &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tempFileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tempFileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;room-for-improvement&quot;&gt;Room for improvement&lt;/h2&gt;
+&lt;p&gt;This class could be improved by adding an ability to skip files and file extensions.&lt;/p&gt;
+</description>
+        <pubDate>2021-04-30</pubDate>
+        <link>https://www.therealomar.com/articles/2019-06/compression-android</link>
+        <guid isPermaLink="true">https://www.therealomar.com/articles/2019-06/compression-android</guid>
+        
+        <category>Android</category>
+        
+        <category>Xamarin</category>
+        
+        <category>C#</category>
+        
+        <category>java</category>
+        
+        <category>zip</category>
+        
+        
+        <category>post-2</category>
+        
+        <category>android</category>
+        
+        <category>xamarin</category>
+        
+        <category>c#</category>
+        
+      </item>
+    
+      <item>
+        <title>Meta post</title>
+        <description>&lt;p&gt;The purpose of this blog is to try and organize my thoughts and archive my personal tips, tricks, and solutions to every day problems.&lt;/p&gt;
+</description>
+        <pubDate>2021-04-30</pubDate>
+        <link>https://www.therealomar.com/articles/2019-05/meta-post</link>
+        <guid isPermaLink="true">https://www.therealomar.com/articles/2019-05/meta-post</guid>
+        
+        
+        <category>post-1</category>
+        
+        <category>meta</category>
+        
+      </item>
+    
+  </channel>
+</rss>

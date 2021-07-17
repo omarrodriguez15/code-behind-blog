@@ -1,4 +1,4 @@
-name: PublishPost
+name: Generate updated site PR
 on: [pull_request]
 jobs:
   test:
@@ -14,4 +14,8 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
-        branch: production-promotion
+        commit-message: Automated update of generated site
+        title: Automated update of generated site
+        body: automated but github action
+        branch: update-generated-site
+        base: omarrodriguez15-workflow
