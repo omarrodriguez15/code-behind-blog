@@ -13,9 +13,10 @@ jobs:
     - run: bundle exec jekyll build
     
     - uses: andstor/copycat-action@v3
+      working-directory: /_site
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: /_site
+        src_path: /.
         src_branch: omarrodriguez15-workflow
         dst_branch: latest-automated-generated-site
         dst_path: /.
