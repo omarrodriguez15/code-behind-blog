@@ -15,10 +15,10 @@ jobs:
     - uses: andstor/copycat-action@v3
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: /_site
+        src_path: /_site/.
         src_branch: omarrodriguez15-workflow
         dst_branch: latest-automated-generated-site
-        dst_path: ../.
+        dst_path: /.
         dst_owner: omarrodriguez15
         dst_repo_name: omarrodriguez15.github.io
         commit_message: Automated change from codebehind repo ${{ env.GITHUB_RUN_ID }}
