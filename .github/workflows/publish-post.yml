@@ -12,8 +12,8 @@ jobs:
     - run: gem install jekyll
     - run: bundle exec jekyll build
     
+    working-directory: /_site
     - uses: andstor/copycat-action@v3
-      working-directory: /_site
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
         src_path: /.
