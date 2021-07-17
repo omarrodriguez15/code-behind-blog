@@ -1,23 +1,23 @@
-name: PublishPost
-on: [pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.6 # Not needed with a .ruby-version file
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - run: gem install jekyll
-    - run: bundle exec jekyll build
+# name: PublishPost
+# on: [pull_request]
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - uses: ruby/setup-ruby@v1
+#       with:
+#         ruby-version: 2.6 # Not needed with a .ruby-version file
+#         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+#     - run: gem install jekyll
+#     - run: bundle exec jekyll build
     
-    - uses: andstor/copycat-action@v3
-      with:
-        personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: /_site
-        src_branch: omarrodriguez15-workflow
-        dst_branch: test-post-publish
-        dst_path: /.
-        dst_owner: omarrodriguez15
-        dst_repo_name: omarrodriguez15.github.io
+#     - uses: andstor/copycat-action@v3
+#       with:
+#         personal_token: ${{ secrets.PERSONAL_TOKEN }}
+#         src_path: /_site
+#         src_branch: omarrodriguez15-workflow
+#         dst_branch: test-post-publish
+#         dst_path: /.
+#         dst_owner: omarrodriguez15
+#         dst_repo_name: omarrodriguez15.github.io
