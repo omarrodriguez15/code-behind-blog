@@ -12,13 +12,12 @@ jobs:
     - run: gem install jekyll
     - run: bundle exec jekyll build
     
-    working-directory: /_site
     - uses: andstor/copycat-action@v3
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: /.
+        src_path: /_site
         src_branch: omarrodriguez15-workflow
         dst_branch: latest-automated-generated-site
         dst_path: /.
         dst_owner: omarrodriguez15
-        dst_repo_name: omarrodriguez15.github.io
+        dst_repo_name: omarrodriguez15.github.io/..
