@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Increasing my command line efficiency"
+title:  "Testing mod my command line efficiency"
 date:   2021-04-29 22:15:00
 categories: [post-5, development, dev ]
 tags: []
