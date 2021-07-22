@@ -11,14 +11,43 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - run: gem install jekyll
     - run: bundle exec jekyll build
+    - run: |
+        git clone --branch automated-generated-site-changes --single-branch --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15.github.io.git temprepo
+        if [ "$?" -ne 0 ]; then
+            echo >&2 "Cloning branch failed"
+            echo >&2 "Falling back to default branch"
+            git clone --single-branch --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15.github.io.git temprepo
+            cd temprepo|| exit "$?"
+            echo >&2 "Creating branch 'automated-generated-site-changes "
+            git checkout -b automated-generated-site-changes 
+            if [ "$?" -ne 0 ]; then
+                echo >&2 "Creation of Branch automated-generated-site-changes  failed"
+                exit 1
+            fi
+            cd ..
+        fi
+        
+        cp -rf /_site/ temprepo
+
+        if [ -z "$(git status --porcelain)" ]; then
+            # Working directory is clean
+            echo "No changes detected "
+        else
+            # Uncommitted changes
+            git add -A
+            git commit --message "woo it finally worked"
+            git push origin automated-generated-site-changes 
+        fi
+
+        echo "Copying complete 👌"
     
-    - uses: andstor/copycat-action@v3
-      with:
-        personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: /_site/.
-        src_branch: omarrodriguez15-workflow
-        dst_branch: latest-automated-generated-site
-        dst_path: /
-        dst_owner: omarrodriguez15
-        dst_repo_name: omarrodriguez15.github.io
-        commit_message: Automated change from codebehind repo ${{ env.GITHUB_RUN_ID }}
+    # - uses: andstor/copycat-action@v3
+    #   with:
+    #     personal_token: ${{ secrets.PERSONAL_TOKEN }}
+    #     src_path: /_site/.
+    #     src_branch: omarrodriguez15-workflow
+    #     dst_branch: latest-automated-generated-site
+    #     dst_path: /
+    #     dst_owner: omarrodriguez15
+    #     dst_repo_name: omarrodriguez15.github.io
+    #     commit_message: Automated change from codebehind repo ${{ env.GITHUB_RUN_ID }}
