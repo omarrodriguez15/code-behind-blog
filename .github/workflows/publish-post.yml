@@ -12,20 +12,10 @@ jobs:
     - run: gem install jekyll
     - run: bundle exec jekyll build
     - run: |
-        git clone --branch automated-generated-site-changes --single-branch --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
-        if [ "$?" -ne 0 ]; then
-            echo >&2 "Cloning branch failed"
-            echo >&2 "Falling back to default branch"
-            git clone --single-branch --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
-            cd temprepo|| exit "$?"
-            echo >&2 "Creating branch 'automated-generated-site-changes "
-            git checkout -b automated-generated-site-changes 
-            if [ "$?" -ne 0 ]; then
-                echo >&2 "Creation of Branch automated-generated-site-changes  failed"
-                exit 1
-            fi
-            cd ..
-        fi
+        git clone --single-branch --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
+        cd temprepo
+        git checkout -b automated-generated-site-changes
+        cd ..
         
         cp -rf /_site/ temprepo
 
