@@ -12,12 +12,12 @@ jobs:
     - run: gem install jekyll
     - run: bundle exec jekyll build
     - run: |
-        git clone --single-branch --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
+        git clone --single-branch --depth 1 https://github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
         cd temprepo
         git checkout -b automated-generated-site-changes
         cd ..
-        
-        cp -rf /_site/ temprepo
+        ls
+        cp -rf _site/ temprepo
 
         if [ -z "$(git status --porcelain)" ]; then
             # Working directory is clean
