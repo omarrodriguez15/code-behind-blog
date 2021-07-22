@@ -17,19 +17,18 @@ jobs:
         git checkout -b automated-generated-site-changes
 
         cp -rf ../_site/* .
+        git checkout -- README.md
 
-        echo "in temprepo "
         git config user.name "$GITHUB_ACTOR"
         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-        echo "try get status"
         if [ -z "$(git status --porcelain)" ]; then
             # Working directory is clean
             echo "No changes detected "
         else
             # Uncommitted changes
             git add -A
-            git commit --message "woo it finally worked"
+            git commit --message "latest automated changes for site (RUN ID $GITHUB_RUN_ID )"
             git push origin automated-generated-site-changes 
         fi
 
