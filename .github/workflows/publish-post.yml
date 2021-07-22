@@ -12,14 +12,12 @@ jobs:
     - run: gem install jekyll
     - run: bundle exec jekyll build
     - run: |
-        git clone --single-branch --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
+        git clone --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
         cd temprepo
         git checkout -b automated-generated-site-changes
-        cd ..
-        ls
-        cp -rf _site/ temprepo
-        cd temprepo
-        
+
+        cp -rf ../_site/* .
+
         echo "in temprepo "
         git config user.name "$GITHUB_ACTOR"
         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
