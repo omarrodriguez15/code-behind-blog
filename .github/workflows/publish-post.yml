@@ -12,7 +12,7 @@ jobs:
     - run: gem install jekyll
     - run: bundle exec jekyll build
     - run: |
-        git clone --single-branch --depth 1 https://github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
+        git clone --single-branch --depth 1 https://${{ secrets.PERSONAL_TOKEN }}@github.com/omarrodriguez15/omarrodriguez15.github.io.git temprepo
         cd temprepo
         git checkout -b automated-generated-site-changes
         cd ..
@@ -31,14 +31,3 @@ jobs:
         fi
 
         echo "Copying complete 👌"
-    
-    # - uses: andstor/copycat-action@v3
-    #   with:
-    #     personal_token: ${{ secrets.PERSONAL_TOKEN }}
-    #     src_path: /_site/.
-    #     src_branch: omarrodriguez15-workflow
-    #     dst_branch: latest-automated-generated-site
-    #     dst_path: /
-    #     dst_owner: omarrodriguez15
-    #     dst_repo_name: omarrodriguez15.github.io
-    #     commit_message: Automated change from codebehind repo ${{ env.GITHUB_RUN_ID }}
