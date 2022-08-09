@@ -24,5 +24,6 @@ $postContent = $templateStr.Replace('%%DATE_TIME%%', (Get-Date -Format 'yyyy-MM-
 $postContent = $postContent.Replace('%%POST_NUMBER%%', $postNumber)
 $postContent = $postContent.Replace('%%POST_TITLE%%', $PostTitle)
 
-$newPostFileName = Join-Path '_posts' "$(Get-Date -Format 'yyyy-MM-dd')-$PostTitle.md"
+$titleNoSpaces = $PostTitle.Replace(' ', '-')
+$newPostFileName = Join-Path '_posts' "$(Get-Date -Format 'yyyy-MM-dd')-$titleNoSpaces.md"
 $postContent | Out-File -Encoding ascii -FilePath $newPostFileName
