@@ -2,7 +2,7 @@
 layout: post
 title:  "TIL that javascript arrays are objects"
 date:   2022-08-03 09:15:00
-categories: [post-8, development, dev ]
+categories: [post-8, development, dev, til ]
 tags: []
 comments: false
 ---

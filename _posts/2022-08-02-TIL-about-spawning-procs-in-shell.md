@@ -2,7 +2,7 @@
 layout: post
 title:  "TIL about spawning processes without a shell"
 date:   2022-08-02 09:15:00
-categories: [post-7, development, dev ]
+categories: [post-7, development, dev, til ]
 tags: []
 comments: false
 ---

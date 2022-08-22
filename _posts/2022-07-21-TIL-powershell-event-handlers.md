@@ -2,7 +2,7 @@
 layout: post
 title:  "TIL about powershell event handlers"
 date:   2022-07-30 09:15:00
-categories: [post-6, development, dev ]
+categories: [post-6, development, dev, til ]
 tags: []
 comments: false
 image:

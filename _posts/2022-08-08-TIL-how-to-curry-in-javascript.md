@@ -2,7 +2,7 @@
 layout: post
 title:  "TIL how to curry in javascript"
 date:   2022-08-08 21:15:16
-categories: [post-9, development, dev ]
+categories: [post-9, development, dev, til ]
 tags: []
 comments: false
 ---
